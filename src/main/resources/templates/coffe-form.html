@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+        <a class="navbar-brand" href="/"><i class="fas fa-home"></i></a>
+        <div class="navbar-nav mr-auto">
+            <div class="nav-item">
+                <a href="/coffe" class="nav-link"><i class="fas fa-list"></i></a>
+            </div>
+        </div>
+    </nav>
+<br/>
+<div class="container" >
+    <div class="row">
+        <div class="col-md-8">
+            <form  th:action="@{/coffe/save}" th:object="${coffe}" method="POST">
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label>Name</label>
+                    </div>
+                    <div class="col-5">
+                        <input  type="text" th:field="*{name}"  name="name" class="form-control" />
+                    </div>
+                    <div class="col-8">
+                        <ul th:if="${#fields.hasErrors('name')}">
+                            <p class="alert alert-danger">Must not be blank</p>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label>Price</label>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" th:field="*{price}" name="price" class="form-control" />
+                    </div>
+                    <div class="col-8">
+                        <ul th:if="${#fields.hasErrors('price')}">
+                            <p class="alert alert-danger">Wrong price</p>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label>Category</label>
+                    </div>
+                    <div class="col-5">
+                        <input  type="text" th:field="*{category}"  name="category" class="form-control" />
+                    </div>
+                    <div class="col-8">
+                        <ul th:if="${#fields.hasErrors('category')}">
+                            <p class="alert alert-danger">Must not be blank</p>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label>Quantity</label>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" th:field="*{quantity}"  name="quantity" class="form-control" />
+                    </div>
+                    <div class="col-8">
+                        <ul th:if="${#fields.hasErrors('quantity')}">
+                            <p class="alert alert-danger">wrong number</p>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label>Shelf number</label>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" th:field="*{shelfNumber}"  name="shelfNumber" class="form-control" />
+                    </div>
+                    <div class="col-8">
+                        <ul th:if="${#fields.hasErrors('shelfNumber')}">
+                            <p class="alert alert-danger">Wrong shelf number</p>
+                        </ul>
+                    </div>
+                </div>
+                <input type="hidden" th:field="*{coffeId}">
+                <div class="form-group row">
+                    <div class="col-5 offset-2">
+                        <div class="row">
+                            <div class="col-6">
+                                 <input type="submit" value="Save" class="btn btn-info form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+
+
+<footer class="page-footer text-white-50 fixed-bottom" style="background-color: #343a40;">
+    <div class="footer-copyright text-center py-3">
+        &copy; 2019 - Coffe
+    </div>
+</footer>
+
+</html>
